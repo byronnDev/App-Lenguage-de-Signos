@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ListaDeElementosRecyclerView" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/color_azul_claro</item>
+        <item name="colorPrimary">@color/primario</item>
     </style>
 
     <style name="Theme.ListaDeElementosRecyclerView" parent="Base.Theme.ListaDeElementosRecyclerView" />

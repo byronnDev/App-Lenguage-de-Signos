@@ -3,8 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="color_verde">#1de9b6</color> <!-- Verde -->
-    <color name="color_verde_claro">#b9f6ca</color> <!-- Verde Claro (Estilo Pastel) -->
+    <color name="primario">#009641</color> <!-- Verde -->
+    <color name="color_verde_claro">#00ff7f</color> <!-- Verde Claro (Estilo Pastel) -->
 
     <color name="color_amarillo">#ffeb3b</color> <!-- Amarillo -->
     <color name="color_amarillo_claro">#ffff8d</color> <!-- Amarillo Claro (Estilo Pastel) -->
