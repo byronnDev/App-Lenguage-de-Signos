@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         List<ItemData> dataList = new ArrayList<>();
 
         Context context = getApplicationContext(); // Puedes obtener el contexto de esta manera
-        int verdeColor = ContextCompat.getColor(context, R.color.color_verde);
+        int verdeColor = ContextCompat.getColor(context, R.color.primario);
         int amarilloColor = ContextCompat.getColor(context, R.color.color_amarillo);
         int azulColor = ContextCompat.getColor(context, R.color.color_azul);
         int rojoColor = ContextCompat.getColor(context, R.color.color_rojo);
