@@ -1,6 +1,10 @@
 package mikel.echeverria.model;
 
+import io.realm.annotations.PrimaryKey;
+
 public class Card {
+    @PrimaryKey
+    private int id;
     private int imageResource;
     private String name;
     private String description;
