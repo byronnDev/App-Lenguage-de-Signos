@@ -21,18 +21,15 @@ public class MainActivity2 extends AppCompatActivity {
 
         imgImagen = (ImageView) findViewById(R.id.imgImagen);
         txtName = (TextView) findViewById(R.id.txtName);
-        txtDescription = (TextView) findViewById(R.id.txtDescription);
 
         // Recogemos la informacion pasada
         Intent intent = getIntent();
         int imageResource = intent.getIntExtra("imageResource", R.drawable.image1 /* default image */);
         String name = intent.getStringExtra("name");
-        String description = intent.getStringExtra("description");
 
         // Asignamos imagen, nombre y descripción
         imgImagen.setImageResource(imageResource);
         txtName.setText(name);
-        txtDescription.setText(description);
 
     }
 }
