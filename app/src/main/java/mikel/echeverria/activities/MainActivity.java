@@ -1,4 +1,4 @@
-package mikel.echeverria;
+package mikel.echeverria.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -12,7 +12,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapters.RecyclerDataAdapter;
+import mikel.echeverria.model.Card;
+import mikel.echeverria.R;
+import mikel.echeverria.adapters.RecyclerDataAdapter;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         // Establece el LayoutManager
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        List<ItemData> dataList = new ArrayList<>();
+        List<Card> dataList = new ArrayList<>();
 
         Context context = getApplicationContext(); // Puedes obtener el contexto de esta manera
         int verdeColor = ContextCompat.getColor(context, R.color.primario);
@@ -61,14 +63,14 @@ public class MainActivity extends AppCompatActivity {
         String aiDescription = "La Inteligencia Artificial es un campo de la informática que se enfoca en la creación de sistemas y programas capaces de realizar tareas que, normalmente, requerirían inteligencia humana. Estos sistemas pueden aprender, razonar, tomar decisiones y procesar datos de manera autónoma. La IA tiene aplicaciones en una amplia gama de industrias, incluyendo la atención médica, la industria automotriz, la logística y la atención al cliente. Su desarrollo continúa avanzando, con el potencial de transformar fundamentalmente la forma en que interactuamos con la tecnología y el mundo que nos rodea.";
 
         // Creamos los objetos/items
-        dataList.add(new ItemData(R.drawable.image1, "Hello!", helloDescription, verdeColor, verdeClaroColor)); // Verde
-        dataList.add(new ItemData(R.drawable.image2, "Robot", robotDescription, amarilloColor, amarilloClaroColor)); // Amarillo
-        dataList.add(new ItemData(R.drawable.image3, "Vampiro", vampireDescription, azulColor,azulClaroColor)); // Azul
-        dataList.add(new ItemData(R.drawable.image4, "Duende", elfDescription, rojoColor,rojoClaroColor)); // Rojo
-        dataList.add(new ItemData(R.drawable.image5, "Cerebro", brainDescription, marronColor,marronClaroColor)); // Marrón
-        dataList.add(new ItemData(R.drawable.image6, "Fuego", fireDescription, moradoColor,moradoClaroColor)); // Morado
-        dataList.add(new ItemData(R.drawable.image1, "Hola!", holaDescription, cianColor,cianClaroColor)); // Cian
-        dataList.add(new ItemData(R.drawable.image2, "IA", aiDescription, grisColor,grisClaroColor)); // Gris
+        dataList.add(new Card(R.drawable.image1, "Hello!", helloDescription, verdeColor, verdeClaroColor)); // Verde
+        dataList.add(new Card(R.drawable.image2, "Robot", robotDescription, amarilloColor, amarilloClaroColor)); // Amarillo
+        dataList.add(new Card(R.drawable.image3, "Vampiro", vampireDescription, azulColor,azulClaroColor)); // Azul
+        dataList.add(new Card(R.drawable.image4, "Duende", elfDescription, rojoColor,rojoClaroColor)); // Rojo
+        dataList.add(new Card(R.drawable.image5, "Cerebro", brainDescription, marronColor,marronClaroColor)); // Marrón
+        dataList.add(new Card(R.drawable.image6, "Fuego", fireDescription, moradoColor,moradoClaroColor)); // Morado
+        dataList.add(new Card(R.drawable.image1, "Hola!", holaDescription, cianColor,cianClaroColor)); // Cian
+        dataList.add(new Card(R.drawable.image2, "IA", aiDescription, grisColor,grisClaroColor)); // Gris
 
         recyclerDataAdapter = new RecyclerDataAdapter(dataList, new RecyclerDataAdapter.OnItemClickListener() {
             @Override
