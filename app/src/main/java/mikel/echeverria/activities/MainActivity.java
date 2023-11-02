@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void introducirDatos() {
+        listaDeElementos = realm.where(Card.class).findAll();
+        realm.commitTransaction();
 
         if (listaDeElementos.isEmpty()){
 
@@ -71,9 +73,10 @@ public class MainActivity extends AppCompatActivity {
             //realm.copyToRealm(caballero);
             //realm.copyToRealm(mago);
 
+            listaDeElementos = realm.where(Card.class).findAll();
+            realm.commitTransaction();
         }
-        listaDeElementos = realm.where(Card.class).findAll();
-        realm.commitTransaction();
+
     }
 
 
