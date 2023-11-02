@@ -58,12 +58,6 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         public void assignData(Card item, OnItemClickListener listener) {
             imageView.setImageResource(item.getImageResource());
             textView.setText(item.getName());
-            // Colores
-            int color = item.getColor();
-            int colorClaro = item.getColorClaro();
-
-            imageView.setBackgroundColor(colorClaro);
-            textView.setBackgroundColor(color);
 
             // Configura el clic del elemento
             itemView.setOnClickListener(new View.OnClickListener() {
