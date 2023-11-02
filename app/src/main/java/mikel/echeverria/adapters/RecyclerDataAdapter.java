@@ -58,11 +58,6 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         public void assignData(Card item, OnItemClickListener listener) {
             imageView.setImageResource(item.getImageResource());
             textView.setText(item.getName());
-            // Colores
-            int color = item.getColor();
-            int colorClaro = item.getColorClaro();
-            imageView.setBackgroundColor(colorClaro);
-            textView.setBackgroundColor(color);
 
             // Configura el clic del elemento
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +66,6 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
                     Intent intent = new Intent(view.getContext(), MainActivity2.class);
                     intent.putExtra("imageResource", item.getImageResource());
                     intent.putExtra("name", item.getName());
-                    intent.putExtra("description", item.getDescription());
                     view.getContext().startActivity(intent);
                 }
             });
