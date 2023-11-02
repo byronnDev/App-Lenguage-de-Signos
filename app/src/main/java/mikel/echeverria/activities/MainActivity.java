@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         List<Card> dataList = new ArrayList<>();
 
         // Creamos los objetos/items
-        dataList.add(new Card(R.drawable.image1, "Prueba"));
 
         recyclerDataAdapter = new RecyclerDataAdapter(dataList, new RecyclerDataAdapter.OnItemClickListener() {
             @Override

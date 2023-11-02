@@ -1,22 +1,23 @@
 package mikel.echeverria.model;
 
-public class Card {
+import io.realm.Realm;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Card extends RealmObject {
+    @PrimaryKey
+    private int idCard;
     private int imageResource;
     private String name;
-    private String description;
-    private int color;
-    private int colorClaro;
 
     public Card() {
         // Necesario para el Realm
     }
 
-    public Card(int imageResource, String name, String description, int color, int colorClaro) {
+    public Card(int imageResource, String name) {
         this.imageResource = imageResource;
         this.name = name;
-        this.description = description;
-        this.color = color;
-        this.colorClaro = colorClaro;
+
     }
 
     public int getImageResource() {
@@ -27,15 +28,4 @@ public class Card {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public int getColor() {
-        return color;
-    }
-
-    public int getColorClaro() {
-        return colorClaro;
-    }
 }
