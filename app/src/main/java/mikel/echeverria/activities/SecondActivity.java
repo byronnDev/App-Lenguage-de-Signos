@@ -12,7 +12,6 @@ import mikel.echeverria.R;
 public class SecondActivity extends AppCompatActivity {
     ImageView imgImagen;
     TextView txtName;
-    TextView txtDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,7 @@ public class SecondActivity extends AppCompatActivity {
 
         // Recogemos la informacion pasada
         Intent intent = getIntent();
-        int imageResource = intent.getIntExtra("imageResource", R.drawable.image1 /* default image */);
+        int imageResource = intent.getIntExtra("imageResource", R.drawable.abajo /* default image */);
         String name = intent.getStringExtra("name");
 
         // Asignamos imagen, nombre y descripción
