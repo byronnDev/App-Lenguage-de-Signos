@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import mikel.echeverria.model.Card;
-import mikel.echeverria.activities.MainActivity2;
+import mikel.echeverria.activities.SecondActivity;
 import mikel.echeverria.R;
 
 public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapter.RecyclerDataHolder> {
@@ -63,7 +63,7 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), MainActivity2.class);
+                    Intent intent = new Intent(view.getContext(), SecondActivity.class);
                     intent.putExtra("imageResource", item.getImageResource());
                     intent.putExtra("name", item.getName());
                     view.getContext().startActivity(intent);

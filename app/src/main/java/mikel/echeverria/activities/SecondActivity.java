@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import mikel.echeverria.R;
 
-public class MainActivity2 extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
     ImageView imgImagen;
     TextView txtName;
     TextView txtDescription;
@@ -17,7 +17,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.second_activity);
 
         imgImagen = (ImageView) findViewById(R.id.imgImagen);
         txtName = (TextView) findViewById(R.id.txtName);
