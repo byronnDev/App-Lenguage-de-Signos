@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         List<Card> dataList = new ArrayList<>();
 
         // Creamos los objetos/items
-
         recyclerDataAdapter = new RecyclerDataAdapter(dataList, new RecyclerDataAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, String description) {
@@ -65,12 +64,18 @@ public class MainActivity extends AppCompatActivity {
             realm.commitTransaction();
 
             //creacion de objetos
-            //elemento mago = new elemento("mago","El mago de la corte real, tambien engargado de ayudar al rey con su gran sabiduria",R.drawable._02_wizard,"#c39bd3", "#9b59b6");
+            List<Card> dataList = new ArrayList<>();
 
 
-            realm.beginTransaction();
+
+
+
+
+
+
+                    realm.beginTransaction();
             // subirlos a la base de datos
-            //realm.copyToRealm(caballero);
+            realm.copyToRealm(dataList);
             //realm.copyToRealm(mago);
 
             listaDeElementos = realm.where(Card.class).findAll();

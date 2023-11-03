@@ -1,8 +1,10 @@
 package mikel.echeverria.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import mikel.echeverria.app.MyApplication;
@@ -12,13 +14,13 @@ public class Card extends RealmObject {
     private int idCard;
     private int imageResource;
     private String name;
-    private List<String> frases;
+    private RealmList<String> frases;
 
     public Card() {
         // Necesario para el Realm
     }
 
-    public Card(int imageResource, String name, List<String> frases) {
+    public Card(int imageResource, String name, RealmList<String> frases) {
         this.idCard = MyApplication.cardID.getAndIncrement();
         this.imageResource = imageResource;
         this.name = name;
@@ -37,7 +39,7 @@ public class Card extends RealmObject {
         return frases;
     }
 
-    public void setFrases(List<String> frases) {
+    public void setFrases(RealmList<String> frases) {
         this.frases = frases;
     }
 
