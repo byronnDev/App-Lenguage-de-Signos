@@ -16,12 +16,11 @@ public class Card extends RealmObject {
     private String name;
     private RealmList<String> frases;
 
-    public Card() {
-        // Necesario para el Realm
-    }
+    public Card() {} // Necesario para el Realm
 
     public Card(int imageResource, String name, RealmList<String> frases) {
-        this.idCard = MyApplication.cardID.getAndIncrement();
+        // Asignamos el idCard autoincremental
+        this.idCard = MyApplication.cardID.incrementAndGet();
         this.imageResource = imageResource;
         this.name = name;
         this.frases = frases;
