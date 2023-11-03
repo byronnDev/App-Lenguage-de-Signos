@@ -25,7 +25,6 @@ public class Card extends RealmObject {
         this.imageResource = imageResource;
         this.name = name;
         this.frases = frases;
-
     }
 
     public int getImageResource() {
@@ -41,6 +40,14 @@ public class Card extends RealmObject {
 
     public void setFrases(RealmList<String> frases) {
         this.frases = frases;
+    }
+
+    public int getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(int idCard) {
+        this.idCard = idCard;
     }
 
 }
