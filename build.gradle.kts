@@ -1,12 +1,8 @@
-buildscript{
-    dependencies{
-        classpath("io.realm:realm-gradle-plugin:10.15.1")
-    }
-}
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     dependencies {
-        classpath ("io.realm:realm-gradle-plugin:10.15.1")
+        classpath ("io.realm:realm-gradle-plugin:10.17.0")
     }
 }
 plugins {

@@ -19,7 +19,6 @@ public class Card extends RealmObject {
         this.idCard = MyApplication.cardID.getAndIncrement();
         this.imageResource = imageResource;
         this.name = name;
-
     }
 
     public int getImageResource() {
