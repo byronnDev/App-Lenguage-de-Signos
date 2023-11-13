@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 import mikel.echeverria.model.Card;
 import mikel.echeverria.R;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     RealmResults<Card> listaDeElementos;
     RecyclerView recyclerView;
     RecyclerDataAdapter recyclerDataAdapter;
+
+    TextView busqueda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
         // Establece el LayoutManager
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        List<Card> dataList = new ArrayList<>();
+        introducirDatos();
+
 
         // Creamos los objetos/items
-        recyclerDataAdapter = new RecyclerDataAdapter(dataList, new RecyclerDataAdapter.OnItemClickListener() {
+        recyclerDataAdapter = new RecyclerDataAdapter(listaDeElementos, new RecyclerDataAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(String name, String description) {
                 Toast.makeText(MainActivity.this, name + " " + description, Toast.LENGTH_LONG).show();
@@ -49,6 +54,18 @@ public class MainActivity extends AppCompatActivity {
         // Establece el adaptador en el RecyclerView
         recyclerView.setAdapter(recyclerDataAdapter);
     }
+    //cuando cambiamos la TextView de busqueda se llama a este metodo para filtrar los datos de la lista de elementos
+    public void filtrarDatos() {
+        listaDeElementos = realm.where(Card.class).findAll();
+        realm.commitTransaction();
+        RealmResults<Card> listaFiltrada = listaDeElementos.where().contains("name", busqueda.getText().toString()).findAll();
+        recyclerDataAdapter.setDataList(listaFiltrada);
+        recyclerDataAdapter.notifyDataSetChanged();
+    }
+    //cuando se inicia la aplicacion se llama a este metodo para introducir los datos en la lista de elementos
+
+
+
 
 
 
@@ -62,9 +79,15 @@ public class MainActivity extends AppCompatActivity {
 
             listaDeElementos = realm.where(Card.class).findAll();
             realm.commitTransaction();
+            realm.beginTransaction();
 
             //creacion de objetos
-            List<Card> dataList = new ArrayList<>();
+
+
+            // Crear los objetos Card que quieres agregar
+
+
+            // Agregar los objetos a Realm
 
 
 
@@ -73,13 +96,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    realm.beginTransaction();
             // subirlos a la base de datos
-            realm.copyToRealm(dataList);
-            //realm.copyToRealm(mago);
 
-            listaDeElementos = realm.where(Card.class).findAll();
+            //realm.copyToRealm(dataList);
+
+
+
             realm.commitTransaction();
+            listaDeElementos = realm.where(Card.class).findAll();
+            recyclerDataAdapter.setDataList(listaDeElementos);
+            recyclerDataAdapter.notifyDataSetChanged();
         }
 
     }

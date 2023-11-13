@@ -2,6 +2,8 @@ package mikel.echeverria.app;
 
 import android.app.Application;
 
+import io.realm.RealmList;
+import mikel.echeverria.R;
 import mikel.echeverria.model.Card;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -41,6 +43,9 @@ public class MyApplication extends Application {
         if (results.size()>0){
             return new AtomicInteger(results.max("id").intValue());
         }else{
+
+
+            realm.commitTransaction();
             return new AtomicInteger(0);
         }
     }

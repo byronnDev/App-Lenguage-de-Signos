@@ -10,10 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.RealmList;
+import io.realm.RealmResults;
 import mikel.echeverria.model.Card;
 import mikel.echeverria.activities.SecondActivity;
 import mikel.echeverria.R;
@@ -47,10 +46,13 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         return dataList.size();
     }
 
+    public void setDataList(RealmResults<Card> listaDeElementos) {
+
+    }
+
     public static class RecyclerDataHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
-        List<String> lstFrases;
 
         public RecyclerDataHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,12 +61,16 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         }
 
         public void assignData(Card item, OnItemClickListener listener) {
+            imageView.setImageResource(item.getImageResource());
+            textView.setText(item.getName());
+
             // Configura el clic del elemento
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), SecondActivity.class);
-                    intent.putExtra("id", item.getIdCard());
+                    intent.putExtra("imageResource", item.getImageResource());
+                    intent.putExtra("name", item.getName());
                     view.getContext().startActivity(intent);
                 }
             });
