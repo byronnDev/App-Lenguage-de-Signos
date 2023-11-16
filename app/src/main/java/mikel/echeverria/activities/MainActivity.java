@@ -114,5 +114,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void borrarDatos(){
+
+        realm.beginTransaction();
+        RealmResults<Card> results = realm.where(Card.class).findAll();
+        results.deleteAllFromRealm();
+        realm.commitTransaction();
+
+    }
 
 }
