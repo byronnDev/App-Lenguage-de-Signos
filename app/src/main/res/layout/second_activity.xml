@@ -10,11 +10,12 @@
         android:id="@+id/imgImagen"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -30,13 +31,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imgImagen" />
 
     <ScrollView
-        android:layout_width="412dp"
-        android:layout_height="296dp"
+        android:layout_width="409dp"
+        android:layout_height="271dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName"
+        app:layout_constraintTop_toBottomOf="@+id/imgImagen"
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
@@ -46,7 +47,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="20dp"
-            android:text="Descripción larga que requiere desplazamiento"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </ScrollView>
