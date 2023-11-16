@@ -50,7 +50,7 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
 
     }
 
-    public static class RecyclerDataHolder extends RecyclerView.ViewHolder {
+    public class RecyclerDataHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
 
@@ -65,19 +65,12 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
             textView.setText(item.getName());
 
             // Configura el clic del elemento
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), SecondActivity.class);
-                    intent.putExtra("imageResource", item.getImageResource());
-                    intent.putExtra("name", item.getName());
-                    view.getContext().startActivity(intent);
-                }
-            });
+
+            itemView.setOnClickListener(view -> listener.onItemClick(item));
         }
     }
 
     public interface OnItemClickListener {
-        void onItemClick(String name, String description);
+        void onItemClick(Card item);
     }
 }

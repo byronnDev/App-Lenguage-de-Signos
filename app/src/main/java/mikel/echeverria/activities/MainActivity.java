@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,8 +47,11 @@ public class MainActivity extends AppCompatActivity {
         // Creamos los objetos/items
         recyclerDataAdapter = new RecyclerDataAdapter(listaDeElementos, new RecyclerDataAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(String name, String description) {
-                Toast.makeText(MainActivity.this, name + " " + description, Toast.LENGTH_LONG).show();
+            public void onItemClick(Card item) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                intent.putExtra("id",item.getIdCard());
+
+                startActivity(intent);
             }
         });
 
