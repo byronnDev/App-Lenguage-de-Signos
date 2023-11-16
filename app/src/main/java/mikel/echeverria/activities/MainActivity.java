@@ -1,18 +1,12 @@
 package mikel.echeverria.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -26,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     RealmResults<Card> listaDeElementos;
     RecyclerView recyclerView;
     RecyclerDataAdapter recyclerDataAdapter;
-
     TextView busqueda;
 
     @Override
@@ -34,93 +27,54 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        busqueda = findViewById(R.id.editTextText);
         realm = Realm.getDefaultInstance();
-        // Inicializa tu RecyclerView
         recyclerView = findViewById(R.id.my_recycler_view);
-
-        // Establece el LayoutManager
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        introducirDatos();
+        initializeData();
 
-
-        // Creamos los objetos/items
-        recyclerDataAdapter = new RecyclerDataAdapter(listaDeElementos, new RecyclerDataAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Card item) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
-                intent.putExtra("id",item.getIdCard());
-
-                startActivity(intent);
-            }
+        recyclerDataAdapter = new RecyclerDataAdapter(listaDeElementos, item -> {
+            Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+            intent.putExtra("id",item.getId());
+            startActivity(intent);
         });
 
-        // Establece el adaptador en el RecyclerView
         recyclerView.setAdapter(recyclerDataAdapter);
     }
-    //cuando cambiamos la TextView de busqueda se llama a este metodo para filtrar los datos de la lista de elementos
+
     public void filtrarDatos() {
-        listaDeElementos = realm.where(Card.class).findAll();
-        realm.commitTransaction();
         RealmResults<Card> listaFiltrada = listaDeElementos.where().contains("name", busqueda.getText().toString()).findAll();
         recyclerDataAdapter.setDataList(listaFiltrada);
         recyclerDataAdapter.notifyDataSetChanged();
     }
-    //cuando se inicia la aplicacion se llama a este metodo para introducir los datos en la lista de elementos
 
-
-
-
-
-
-
-
-    public void introducirDatos() {
+    public void initializeData() {
         listaDeElementos = realm.where(Card.class).findAll();
-        realm.commitTransaction();
 
         if (listaDeElementos.isEmpty()){
+            RealmList<String> frases = new RealmList<>();
+            frases.add("frase1");
+            frases.add("frase2");
+            frases.add("frase3");
 
-            listaDeElementos = realm.where(Card.class).findAll();
-            realm.commitTransaction();
+            Card card1 = new Card(R.drawable.abajo, "card1", frases);
+            Card card2 = new Card(R.drawable.abrazar, "card2", frases);
+            Card card3 = new Card(R.drawable.aburrido, "card3", frases);
+
             realm.beginTransaction();
-
-            //creacion de objetos
-
-
-            // Crear los objetos Card que quieres agregar
-
-
-            // Agregar los objetos a Realm
-
-
-
-
-
-
-
-
-            // subirlos a la base de datos
-
-            //realm.copyToRealm(dataList);
-
-
-
+            realm.copyToRealm(card1);
+            realm.copyToRealm(card2);
+            realm.copyToRealm(card3);
             realm.commitTransaction();
+
             listaDeElementos = realm.where(Card.class).findAll();
-            recyclerDataAdapter.setDataList(listaDeElementos);
-            recyclerDataAdapter.notifyDataSetChanged();
         }
-
     }
 
-    public void borrarDatos(){
-
+    public void deleteData(){
         realm.beginTransaction();
-        RealmResults<Card> results = realm.where(Card.class).findAll();
-        results.deleteAllFromRealm();
+        realm.where(Card.class).findAll().deleteAllFromRealm();
         realm.commitTransaction();
-
     }
-
 }

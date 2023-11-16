@@ -1,9 +1,7 @@
 package mikel.echeverria.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -11,7 +9,7 @@ import mikel.echeverria.app.MyApplication;
 
 public class Card extends RealmObject {
     @PrimaryKey
-    private int idCard;
+    private int id;
     private int imageResource;
     private String name;
     private RealmList<String> frases;
@@ -20,7 +18,7 @@ public class Card extends RealmObject {
 
     public Card(int imageResource, String name, RealmList<String> frases) {
         // Asignamos el idCard autoincremental
-        this.idCard = MyApplication.cardID.incrementAndGet();
+        this.id = MyApplication.cardID.incrementAndGet();
         this.imageResource = imageResource;
         this.name = name;
         this.frases = frases;
@@ -41,12 +39,12 @@ public class Card extends RealmObject {
         this.frases = frases;
     }
 
-    public int getIdCard() {
-        return idCard;
+    public int getId() {
+        return id;
     }
 
-    public void setIdCard(int idCard) {
-        this.idCard = idCard;
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

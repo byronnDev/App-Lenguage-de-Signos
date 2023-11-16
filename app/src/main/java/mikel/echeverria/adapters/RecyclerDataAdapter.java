@@ -1,6 +1,5 @@
 package mikel.echeverria.adapters;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import io.realm.RealmResults;
 import mikel.echeverria.model.Card;
-import mikel.echeverria.activities.SecondActivity;
 import mikel.echeverria.R;
 
 public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapter.RecyclerDataHolder> {
@@ -29,16 +26,13 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
     @NonNull
     @Override
     public RecyclerDataHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Inflar el diseño del elemento de la lista y crear un nuevo ViewHolder
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
         return new RecyclerDataHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerDataHolder holder, int position) {
-        // Vincula los datos en la posición 'position' al ViewHolder
-        Card item = dataList.get(position);
-        holder.assignData(item, listener);
+        holder.assignData(dataList.get(position), listener);
     }
 
     @Override
@@ -46,8 +40,9 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         return dataList.size();
     }
 
-    public void setDataList(RealmResults<Card> listaDeElementos) {
-
+    public void setDataList(List<Card> listaDeElementos) {
+        this.dataList = listaDeElementos;
+        notifyDataSetChanged();
     }
 
     public class RecyclerDataHolder extends RecyclerView.ViewHolder {
@@ -63,9 +58,6 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         public void assignData(Card item, OnItemClickListener listener) {
             imageView.setImageResource(item.getImageResource());
             textView.setText(item.getName());
-
-            // Configura el clic del elemento
-
             itemView.setOnClickListener(view -> listener.onItemClick(item));
         }
     }
