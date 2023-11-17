@@ -6,6 +6,8 @@
     <color name="primario">#009641</color> <!-- Verde -->
     <color name="color_verde_claro">#00ff7f</color> <!-- Verde Claro (Estilo Pastel) -->
 
+    <color name="secundario">#ffd500</color> <!-- Amarillo ONCE -->
+
     <color name="color_amarillo">#ffeb3b</color> <!-- Amarillo -->
     <color name="color_amarillo_claro">#ffff8d</color> <!-- Amarillo Claro (Estilo Pastel) -->
 
