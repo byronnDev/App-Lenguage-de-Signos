@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
     RealmResults<Card> listaFiltrada = listaDeElementos.where().contains("name", query).findAll();
     recyclerDataAdapter.setDataList(listaFiltrada);
     recyclerDataAdapter.notifyDataSetChanged();
-}
+    }
+
 
     public void initializeData() {
         listaDeElementos = realm.where(Card.class).findAll();
