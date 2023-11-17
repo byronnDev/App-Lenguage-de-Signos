@@ -12,11 +12,11 @@ public class Card extends RealmObject {
     private int id;
     private int imageResource;
     private String name;
-    private Categoria categoria;
+    private String categoria;
 
     public Card() {} // Necesario para el Realm
 
-    public Card(int imageResource, String name, Categoria c) {
+    public Card(int imageResource, String name, String c) {
         // Asignamos el idCard autoincremental
         this.id = MyApplication.cardID.incrementAndGet();
         this.imageResource = imageResource;
@@ -40,11 +40,11 @@ public class Card extends RealmObject {
         this.name = name;
     }
 
-    public Categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
