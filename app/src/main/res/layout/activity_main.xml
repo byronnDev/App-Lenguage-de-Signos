@@ -18,10 +18,10 @@
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="311dp"
+        android:layout_height="40dp"
         android:ems="10"
-        android:hint="nombre signo"
+        android:hint="Buscar Signo"
         android:inputType="text"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,6 +29,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.023" />
+
+    <Button
+        android:id="@+id/btnFiltrar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:icon="@drawable/filter_icon"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toEndOf="@+id/editTextText"
+        app:layout_constraintTop_toTopOf="@+id/editTextText"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
