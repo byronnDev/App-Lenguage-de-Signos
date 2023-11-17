@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +38,24 @@ public class MainActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         recyclerView = findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        busqueda.addTextChangedListener(new TextWatcher() {
 
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No es necesario implementar este método para tu caso
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Este método se llama cuando el texto en el EditText cambia
+                filtrarDatos(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // No es necesario implementar este método para tu caso
+            }
+        });
         button = findViewById(R.id.btnFiltrar);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerDataAdapter);
     }
 
-    public void filtrarDatos() {
-        RealmResults<Card> listaFiltrada = listaDeElementos.where().contains("name", busqueda.getText().toString()).findAll();
-        recyclerDataAdapter.setDataList(listaFiltrada);
-        recyclerDataAdapter.notifyDataSetChanged();
-    }
+    public void filtrarDatos(String query) {
+    RealmResults<Card> listaFiltrada = listaDeElementos.where().contains("name", query).findAll();
+    recyclerDataAdapter.setDataList(listaFiltrada);
+    recyclerDataAdapter.notifyDataSetChanged();
+}
 
     public void initializeData() {
         listaDeElementos = realm.where(Card.class).findAll();
