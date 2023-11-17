@@ -14,6 +14,7 @@ import io.realm.RealmResults;
 import mikel.echeverria.model.Card;
 import mikel.echeverria.R;
 import mikel.echeverria.adapters.RecyclerDataAdapter;
+import mikel.echeverria.model.Categoria;
 
 public class MainActivity extends AppCompatActivity {
     Realm realm;
@@ -58,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
             frases.add("frase2");
             frases.add("frase3");
 
-            Card card1 = new Card(R.drawable.abajo, "card1", frases);
-            Card card2 = new Card(R.drawable.abrazar, "card2", frases);
-            Card card3 = new Card(R.drawable.aburrido, "card3", frases);
+            Card card1 = new Card(R.drawable.abajo, "card1", Categoria.Casa);
+            Card card2 = new Card(R.drawable.abrazar, "card2", Categoria.Calendario);
+            Card card3 = new Card(R.drawable.aburrido, "card3", Categoria.Cuerpo);
 
             realm.beginTransaction();
             realm.copyToRealm(card1);
