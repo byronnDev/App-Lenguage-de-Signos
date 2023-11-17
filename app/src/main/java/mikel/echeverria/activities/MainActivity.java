@@ -72,23 +72,26 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
 
                         switch (item.getTitle().toString()){
-                            case "Ascendente (A-Z)": Comparator<Card> comparadorPorNombre = Comparator.comparing(Card::getName);
+                            case "Ascendente (A-Z)": busqueda.setText("");
+                                                    Comparator<Card> comparadorPorNombre = Comparator.comparing(Card::getName);
                                                     Collections.sort(listaDeElementos, comparadorPorNombre);
                                                     recyclerDataAdapter.setDataList(listaDeElementos);
                                                     recyclerDataAdapter.notifyDataSetChanged();
-                                                    busqueda.setText("");
+
                                                     break;
-                            case "Descendente (Z-A)":Comparator<Card> comparadorPorNombreReversed = Comparator.comparing(Card::getName).reversed();
+                            case "Descendente (Z-A)":busqueda.setText("");
+                                                    Comparator<Card> comparadorPorNombreReversed = Comparator.comparing(Card::getName).reversed();
                                                     Collections.sort(listaDeElementos, comparadorPorNombreReversed);
                                                     recyclerDataAdapter.setDataList(listaDeElementos);
                                                     recyclerDataAdapter.notifyDataSetChanged();
-                                                    busqueda.setText("");
+
                                                     break;
-                            case "Categorías":Comparator<Card> comparadorPorCategoriaYNombre = Comparator.comparing(Card::getCategoria).thenComparing(Card::getName);
+                            case "Categorías":  busqueda.setText("");
+                                                Comparator<Card> comparadorPorCategoriaYNombre = Comparator.comparing(Card::getCategoria).thenComparing(Card::getName);
                                                 Collections.sort(listaDeElementos, comparadorPorCategoriaYNombre);
                                                 recyclerDataAdapter.setDataList(listaDeElementos);
                                                 recyclerDataAdapter.notifyDataSetChanged();
-                                                busqueda.setText("");
+
                                                 break;
                         }
                         return true;
