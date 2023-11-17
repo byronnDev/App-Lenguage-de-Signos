@@ -12,8 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Collections;
+import java.util.Comparator;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -66,6 +70,27 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         Toast.makeText(MainActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+
+                        switch (item.getTitle().toString()){
+                            case "Ascendente (A-Z)": Comparator<Card> comparadorPorNombre = Comparator.comparing(Card::getName);
+                                                    Collections.sort(listaDeElementos, comparadorPorNombre);
+                                                    recyclerDataAdapter.setDataList(listaDeElementos);
+                                                    recyclerDataAdapter.notifyDataSetChanged();
+                                                    busqueda.setText("");
+                                                    break;
+                            case "Descendente (Z-A)":Comparator<Card> comparadorPorNombreReversed = Comparator.comparing(Card::getName).reversed();
+                                                    Collections.sort(listaDeElementos, comparadorPorNombreReversed);
+                                                    recyclerDataAdapter.setDataList(listaDeElementos);
+                                                    recyclerDataAdapter.notifyDataSetChanged();
+                                                    busqueda.setText("");
+                                                    break;
+                            case "Categorías":Comparator<Card> comparadorPorCategoriaYNombre = Comparator.comparing(Card::getCategoria).thenComparing(Card::getName);
+                                                Collections.sort(listaDeElementos, comparadorPorCategoriaYNombre);
+                                                recyclerDataAdapter.setDataList(listaDeElementos);
+                                                recyclerDataAdapter.notifyDataSetChanged();
+                                                busqueda.setText("");
+                                                break;
+                        }
                         return true;
                     }
                 });
@@ -96,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
         listaDeElementos = realm.where(Card.class).findAll();
 
         if (listaDeElementos.isEmpty()){
-
 
             Card card1 = new Card(R.drawable.abajo, "card1", "Casa");
             Card card2 = new Card(R.drawable.abrazar, "card2", "Calendario");
