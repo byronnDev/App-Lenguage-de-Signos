@@ -30,24 +30,4 @@
         app:layout_constraintStart_toStartOf="@+id/imgImagen"
         app:layout_constraintTop_toBottomOf="@+id/imgImagen" />
 
-    <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="271dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgImagen"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:id="@+id/txtFrases"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp"
-            android:textAlignment="textStart"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

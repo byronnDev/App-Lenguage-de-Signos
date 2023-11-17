@@ -11,7 +11,7 @@ import mikel.echeverria.model.Card;
 
 public class SecondActivity extends AppCompatActivity {
     ImageView imgImagen;
-    TextView txtName, txtFrases;
+    TextView txtName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,6 @@ public class SecondActivity extends AppCompatActivity {
 
         imgImagen = findViewById(R.id.imgImagen);
         txtName = findViewById(R.id.txtName);
-        txtFrases = findViewById(R.id.txtFrases);
 
         int idCard = getIntent().getIntExtra("id", 0);
 
@@ -30,8 +29,6 @@ public class SecondActivity extends AppCompatActivity {
 
         imgImagen.setImageResource(card.getImageResource());
         txtName.setText(card.getName());
-        for (String frase: card.getFrases()) {
-            txtFrases.append(frase + "\n");
-        }
+
     }
 }
