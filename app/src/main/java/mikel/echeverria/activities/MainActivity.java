@@ -54,10 +54,7 @@ public class MainActivity extends AppCompatActivity {
         listaDeElementos = realm.where(Card.class).findAll();
 
         if (listaDeElementos.isEmpty()){
-            RealmList<String> frases = new RealmList<>();
-            frases.add("frase1");
-            frases.add("frase2");
-            frases.add("frase3");
+
 
             Card card1 = new Card(R.drawable.abajo, "card1", Categoria.Casa);
             Card card2 = new Card(R.drawable.abrazar, "card2", Categoria.Calendario);
