@@ -18,9 +18,11 @@ import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 import mikel.echeverria.model.Card;
 import mikel.echeverria.R;
 import mikel.echeverria.adapters.RecyclerDataAdapter;
@@ -69,30 +71,28 @@ public class MainActivity extends AppCompatActivity {
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(MainActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
 
                         switch (item.getTitle().toString()){
                             case "Ascendente (A-Z)": busqueda.setText("");
-                                                    Comparator<Card> comparadorPorNombre = Comparator.comparing(Card::getName);
-                                                    Collections.sort(listaDeElementos, comparadorPorNombre);
+                                                    listaDeElementos = listaDeElementos.sort("name");
                                                     recyclerDataAdapter.setDataList(listaDeElementos);
                                                     recyclerDataAdapter.notifyDataSetChanged();
 
                                                     break;
                             case "Descendente (Z-A)":busqueda.setText("");
-                                                    Comparator<Card> comparadorPorNombreReversed = Comparator.comparing(Card::getName).reversed();
-                                                    Collections.sort(listaDeElementos, comparadorPorNombreReversed);
+                                                    listaDeElementos = listaDeElementos.sort("name", Sort.DESCENDING);
                                                     recyclerDataAdapter.setDataList(listaDeElementos);
                                                     recyclerDataAdapter.notifyDataSetChanged();
 
                                                     break;
                             case "Categorías":  busqueda.setText("");
-                                                Comparator<Card> comparadorPorCategoriaYNombre = Comparator.comparing(Card::getCategoria).thenComparing(Card::getName);
-                                                Collections.sort(listaDeElementos, comparadorPorCategoriaYNombre);
+                                                listaDeElementos = listaDeElementos.sort("categoria", Sort.ASCENDING)
+                                                .sort("name", Sort.ASCENDING);
                                                 recyclerDataAdapter.setDataList(listaDeElementos);
                                                 recyclerDataAdapter.notifyDataSetChanged();
 
                                                 break;
+                            default: break;
                         }
                         return true;
                     }
