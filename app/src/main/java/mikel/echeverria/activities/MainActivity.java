@@ -10,15 +10,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.stream.Collectors;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -34,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerDataAdapter recyclerDataAdapter;
     TextView busqueda;
     Button button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         recyclerView = findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
         busqueda.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -111,6 +108,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(recyclerDataAdapter);
+
+        // Cargar la animación
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        busqueda.startAnimation(anim);
+        recyclerView.startAnimation(anim);
+        button.startAnimation(anim);
     }
 
     public void filtrarDatos(String query) {

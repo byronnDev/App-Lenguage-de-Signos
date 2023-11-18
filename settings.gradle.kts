@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Lista de Elementos (RecyclerView)"
+rootProject.name = "Signa App"
 include(":app")
  
